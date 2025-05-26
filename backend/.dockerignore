@@ -1,0 +1,36 @@
+# Archivos de Git
+.git
+.gitignore
+
+# Dependencias de Node (se instalan dentro del contenedor)
+node_modules
+
+# Logs y archivos de depuración
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Artefactos de construcción (si los generas localmente y no los necesitas en la imagen)
+dist
+build
+
+# Archivos de entorno (estos se deben manejar con variables de entorno en Docker)
+.env
+*.env
+
+# Archivos de Docker
+Dockerfile
+Dockerfile*
+docker-compose.yml
+docker-compose.*.yml
+.dockerignore
+
+# Documentación y otros
+README.md
+LICENSE
+
+# Configuraciones de IDE
+.vscode/
+.idea/
+*.swp
+*.swo

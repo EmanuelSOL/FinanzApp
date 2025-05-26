@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: finanzas_db
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: finanzas_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: finanzas_backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: 1234
+      DATABASE_NAME: finanzas_db
+      JWT_SECRET: "SECRETO_DE_JWT_HOLA_MUNDO"
+      JWT_EXPIRES_IN: "1h" 
+      NODE_ENV: "development" 
+    depends_on:
+      - postgres
+
+  frontend:
+    build: ./frontend
+    container_name: finanzas_frontend
+    ports:
+      - "8080:80" 
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules 
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

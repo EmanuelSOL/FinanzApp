@@ -1,0 +1,113 @@
+
+.login-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #F0F2F5; /* Mismo fondo que el register y dashboard */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-form-card {
+  background-color: #FFFFFF;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px; /* Ancho máximo para el formulario */
+  box-sizing: border-box;
+}
+
+.login-form-card h1 {
+  text-align: center;
+  color: #3B3A5F; /* Color principal oscuro de tu tema */
+  font-size: 2em;
+  margin-bottom: 25px;
+}
+
+.login-form-card form div {
+  margin-bottom: 20px;
+}
+
+.login-form-card label {
+  display: block;
+  margin-bottom: 8px;
+  color: #4A5568; /* Color de texto para etiquetas */
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+.login-form-card input[type="email"],
+.login-form-card input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #CBD5E0; /* Borde gris claro */
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border-color 0.2s;
+}
+
+.login-form-card input[type="email"]:focus,
+.login-form-card input[type="password"]:focus {
+  outline: none;
+  border-color: #5A5898; /* Color principal al hacer foco */
+  box-shadow: 0 0 0 2px rgba(90, 88, 152, 0.2);
+}
+
+.login-form-card button[type="submit"] {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #5A5898; /* Color principal del botón */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-form-card button[type="submit"]:hover {
+  background-color: #4A4888; /* Color más oscuro al hacer hover */
+}
+
+.login-form-card button[type="submit"]:disabled {
+  background-color: #A0AEC0; /* Color para botón deshabilitado */
+  cursor: not-allowed;
+}
+
+.login-form-card .error-message {
+  color: #E53E3E; /* Rojo para mensajes de error */
+  background-color: #FFF5F5;
+  border: 1px solid #FC8181;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.register-link-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-link-container p {
+  color: #4A5568;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.register-link-container a {
+  color: #5A5898;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link-container a:hover {
+  text-decoration: underline;
+}

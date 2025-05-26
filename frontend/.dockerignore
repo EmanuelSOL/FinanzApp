@@ -1,0 +1,39 @@
+# Archivos de Git
+.git
+.gitignore
+
+# Dependencias de Node (se instalan en la etapa de construcción si es multi-stage)
+node_modules
+
+# Artefactos de construcción (si los generas localmente y no son parte de la etapa final de nginx)
+dist # Si tu Dockerfile copia desde una etapa 'builder' que tiene su propio 'npm run build',
+     # podrías mantener 'dist' fuera si la etapa final solo copia el 'dist' del builder.
+     # Pero si tu Dockerfile copia TODO y luego construye, entonces ignora 'dist' local.
+     # Dado tu Dockerfile de frontend que usa un builder, es bueno ignorar el dist local.
+build
+
+# Logs y archivos de depuración
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Archivos de entorno
+.env
+*.env
+
+# Archivos de Docker
+Dockerfile
+Dockerfile*
+docker-compose.yml
+docker-compose.*.yml
+.dockerignore
+
+# Documentación y otros
+README.md
+LICENSE
+
+# Configuraciones de IDE
+.vscode/
+.idea/
+*.swp
+*.swo

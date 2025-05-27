@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/frontend/', 
   server: {
     host: '0.0.0.0',
     port: 80,
@@ -18,19 +19,19 @@ export default defineConfig({
         target: 'http://backend:3000/auth/login',
         changeOrigin: true,
       },
-      '/api/auth/profile': { // Añadido para el perfil de usuario
+      '/api/auth/profile': { 
         target: 'http://backend:3000/auth/profile',
         changeOrigin: true,
       },
-      '/api/transactions': { // Añadido para transacciones
+      '/api/transactions': { 
         target: 'http://backend:3000/transactions',
         changeOrigin: true,
       },
-      '/api/categories': { // Añadido para categorías
+      '/api/categories': { 
         target: 'http://backend:3000/categories',
         changeOrigin: true,
       },
-      '/api/dashboard/summary': { // Añadido para el resumen del dashboard
+      '/api/dashboard/summary': { 
         target: 'http://backend:3000/dashboard/summary',
         changeOrigin: true,
       },
@@ -45,3 +46,4 @@ export default defineConfig({
     },
   },
 });
+

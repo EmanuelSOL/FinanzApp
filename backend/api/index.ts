@@ -1,20 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { AppModule } from '../src/app.module'; 
-import * as serverless from 'serverless-http';
-import * as express from 'express';
-import { ValidationPipe } from '@nestjs/common'; 
+import { AppModule } from '../src/app.module'; // Ajusta la ruta a tu AppModule
+import serverless from 'serverless-http'; // CAMBIO AQUÍ
+import express from 'express';             // CAMBIO AQUÍ
+import { ValidationPipe } from '@nestjs/common';
 
 let cachedServer: any;
 
 async function bootstrapServer(): Promise<any> {
   if (!cachedServer) {
-    const expressApp = express();
+    const expressApp = express(); // Ahora express() es la función correcta
     const nestApp = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
-
-    nestApp.enableCors(); // Ejemplo: Habilitar CORS
-
-    // Es importante aplicar el ValidationPipe global aquí también si tu main.ts lo hacía
+    
+    nestApp.enableCors(); 
+    
     nestApp.useGlobalPipes(new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
@@ -22,10 +21,10 @@ async function bootstrapServer(): Promise<any> {
       transformOptions: {
         enableImplicitConversion: true,
       },
-    })); //
+    }));
 
     await nestApp.init();
-    cachedServer = serverless(expressApp);
+    cachedServer = serverless(expressApp); 
   }
   return cachedServer;
 }

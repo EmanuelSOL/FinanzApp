@@ -2,20 +2,24 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json", 
+      "src": "frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "frontend/dist" }
+      "config": {
+        "distDir": "dist" 
+      }
     },
     {
-      "src": "backend/api/index.ts",
+      "src": "backend/api/index.ts", 
       "use": "@vercel/node",
       "config": {
+        "includeFiles": ["../dist/**"] 
       }
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend/api/index" }, 
-    { "source": "/(.*)", "destination": "/frontend/dist/$1" } 
+    { "source": "/api/(.*)", "destination": "/backend/api/index" },
+
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
 

@@ -1,19 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { AppModule } from '../src/app.module'; // Ajusta la ruta a tu AppModule
-import serverless from 'serverless-http'; // CAMBIO AQUÍ
-import express from 'express';             // CAMBIO AQUÍ
+import { AppModule } from '../src/app.module'; 
+import serverless from 'serverless-http';
+import express from 'express';
 import { ValidationPipe } from '@nestjs/common';
 
 let cachedServer: any;
 
 async function bootstrapServer(): Promise<any> {
   if (!cachedServer) {
-    const expressApp = express(); // Ahora express() es la función correcta
+    const expressApp = express();
     const nestApp = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
-    
+
     nestApp.enableCors(); 
-    
+
     nestApp.useGlobalPipes(new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
@@ -30,7 +30,7 @@ async function bootstrapServer(): Promise<any> {
 }
 
 export default async (req: any, res: any) => {
+  console.log(`Backend API handler invoked. Method: ${req.method}, URL: ${req.url}`);
   const server = await bootstrapServer();
   return server(req, res);
 };
-

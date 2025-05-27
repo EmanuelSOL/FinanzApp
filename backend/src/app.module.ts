@@ -32,6 +32,7 @@ import { BudgetsModule } from './budgets/budgets.module';
         entities: [User, Category, Budget, Transaction, BiweeklyBudget],
         synchronize: configService.get<string>('NODE_ENV') !== 'production',
         logging: configService.get<string>('NODE_ENV') !== 'production',
+        ssl: configService.get<string>('NODE_ENV') === 'production' ? { rejectUnauthorized: false } : false,
       }),
       inject: [ConfigService],
     }),
@@ -46,4 +47,3 @@ import { BudgetsModule } from './budgets/budgets.module';
   providers: [AppService],
 })
 export class AppModule {}
-

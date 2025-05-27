@@ -1,19 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
-    },
-    {
-      "src": "backend/api/index.ts",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["../dist/**"] }
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/index.ts": {
+      "runtime": "vercel-node@canary",
+      "includeFiles": ["dist/**"]
     }
-  ],
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend/api/index" },
+    { "source": "/api/(.*)", "destination": "/api/index.ts" },
     { "source": "/(.*)", "destination": "/frontend/index.html" }
   ]
 }
+

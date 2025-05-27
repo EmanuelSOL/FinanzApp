@@ -13,12 +13,7 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/backend/api/index",
-      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
-    },
+    { "source": "/api/(.*)", "destination": "/backend/api/index" },
     { "source": "/(.*)", "destination": "/frontend/index.html" }
   ]
 }
-
